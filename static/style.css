@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color:burlywood;
+    color: black;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header .logo img {
+    width: 120px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+
+/* Main Title Style */
+.mainT {
+    font-weight: bold;
+    font-size: 80px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Centered Paragraph Style */
+.centered {
+    text-align: center;
+    margin: 20px 0;
+}
+
+/* Subtitle Style */
+.title {
+    font-size: 40px;
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Paragraph Font */
+.font {
+    font-family: 'Times New Roman', Times, serif;
+}
+
+/* Image Styling */
+.mainImg {
+    display: block;
+    margin: 0 auto;
+    border-radius: 10px;
+}
+
+/* Text Area and Button for Chat */
+.user-input {
+    text-align: center;
+    margin-top: 20px;
+}
+
+textarea {
+    width: 50%;
+    height: 100px;
+    margin: 10px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 16px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+/* Footer Section */
+footer {
+    position: relative;
+    margin-top: 50px;
+}
+
+footer .chat-icon img {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
