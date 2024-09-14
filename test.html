@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ChatGPT Integration</title>
+</head>
+<body>
+    <div>
+        <textarea id="userInput" placeholder="Ask me anything..."></textarea>
+        <button onclick="getResponse()">Send</button>
+    </div>
+    <div id="response"></div>
+    <script>
+        async function getResponse() {
+            const userInput = document.getElementById('userInput').value;
+    
+            // Send the user input to the Flask backend
+            const response = await fetch('/chat', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    prompt: userInput
+                })
+            });
+    
+            const data = await response.json();
+            document.getElementById('response').innerText = data;
+        }
+    </script>    
+</body>
+</html>
