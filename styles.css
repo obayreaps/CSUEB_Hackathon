@@ -1,0 +1,335 @@
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+}
+
+header {
+    background-color: #4d90fe;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    text-align: left;
+}
+
+.logo img {
+    width: 80px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    text-align: center;
+    padding: 50px;
+    background-color: #ffffff;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap; /* Prevents images from stacking */
+    gap: 40px; /* Adds spacing between the logo and images */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+.hero-center {
+    text-align: center;
+    flex-grow: 1; /* Ensure the logo stays centered */
+}
+
+.hero-logo {
+    display: block;
+    margin: 0 auto;
+}
+
+.hero-center p {
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+.cta-btn {
+    padding: 10px 20px;
+    background-color: #4d90fe;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.cta-btn:hover {
+    background-color: #357ae8;
+}
+
+/* Main images */
+.main-image-left, .main-image-right {
+    width: 30%; /* Lowered width to better fit the layout */
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.main-image-left {
+    margin-right: auto;
+}
+
+.main-image-right {
+    margin-left: auto;
+}
+
+/* About and Contact images */
+.about-img, .contact-img {
+    width: 40%;
+    border-radius: 10px;
+}
+
+footer {
+    background-color: #4d90fe;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
+
+/* User Registration Page */
+.registration-section {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.registration-section h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button.cta-btn {
+    width: 100%;
+    padding: 12px;
+    font-size: 18px;
+    background-color: #4d90fe;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button.cta-btn:hover {
+    background-color: #357ae8;
+}
+
+/* Style for the form */
+.questionnaire {
+    background-color: #A8DBE0;
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+}
+
+.questionnaire h1 {
+    color: #000;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.questionnaire label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.questionnaire input[type="text"], .questionnaire input[type="checkbox"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+.submit-btn {
+    background-color: #7ec7ff;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.submit-btn:hover {
+    background-color: #4bbffe;
+}
+
+/* Style for the form */
+.questionnaire {
+    background-color: #76b5f8; /* Light blue consistent with NextGenScholar branding */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+    width: 80%;
+    text-align: center;
+}
+
+.questionnaire h1 {
+    color: #000;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.questionnaire label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #333;
+}
+
+.questionnaire input[type="text"], .questionnaire input[type="checkbox"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 2px solid #ccc;
+    border-radius: 5px;
+}
+
+.submit-btn {
+    background-color: #33A8FF;
+    color: white;
+    padding: 15px 30px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.2em;
+}
+
+.submit-btn:hover {
+    background-color: #0288D1;
+}
+
+/* Add media queries for better responsiveness */
+@media (min-width: 768px) {
+    .questionnaire {
+        width: 60%;
+    }
+}
+
+@media (max-width: 768px) {
+    .questionnaire input[type="text"], .questionnaire input[type="checkbox"] {
+        width: 100%;
+    }
+}
+
+
+
+
+
+
+/* Scholarship Bot Page Styling */
+.scholarbot-results {
+    background-color: #A8DBE0; /* Light blue */
+    padding: 20px;
+    border-radius: 10px;
+    margin: 0 auto;
+    width: 80%;
+    text-align: left;
+}
+
+.scholarbot-results h1 {
+    color: #000;
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.scholarship-item {
+    background-color: white;
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.scholarship-item p {
+    margin: 0;
+    font-size: 1.1em;
+}
+
+.scholarship-item a {
+    color: #33A8FF;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.scholarship-item a:hover {
+    text-decoration: underline;
+}
+
+/* Bot Response Bubble */
+.scholarbot-response {
+    background-color: #33A8FF;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    width: fit-content;
+    margin-top: 20px;
+    font-size: 1.2em;
+}
+
+/* Chatbox styling */
+.chatbox {
+    background-color:lightblue;
+}

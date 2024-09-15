@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship Questionnaire</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="main_menu.html"><img src="images/nextgen_transparentI.png" alt="NextGenScholar Directory Logo"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="userRegistration.html">Register</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="questionnaire">
+            <h1>Scholarship Questionnaire</h1>
+            <form id="scholarshipForm" onsubmit="redirectToScholarshipPage(event)">
+                <label for="age">1. Age</label>
+                <input type="text" id="age" name="age" required>
+
+                <label for="education-level">2. Education Level</label>
+                <input type="text" id="education-level" name="education-level" required>
+
+                <label for="ethnicity">3. Ethnicity/Race</label>
+                <input type="text" id="ethnicity" name="ethnicity" required>
+
+                <label for="programs">4. Are you involved in any specific programs (MESA, Puente, Dream, Ujoma, etc.)?</label>
+                <input type="text" id="programs" name="programs" required>
+
+                <label for="income">5. What is your household income level?</label>
+                <input type="text" id="income" name="income" required>
+
+                <label for="essay">6. Check If No Essay</label>
+                <input type="checkbox" id="essay" name="essay">
+
+                <!-- New Questions -->
+                <label for="field-of-study">7. Field of Study or Major</label>
+                <input type="text" id="field-of-study" name="field-of-study" required>
+
+                <label for="citizenship">8. Citizenship or Residency Status</label>
+                <input type="text" id="citizenship" name="citizenship" required>
+
+                <label for="achievements">9. Academic Achievements</label>
+                <input type="text" id="achievements" name="achievements" required>
+
+                <label for="activities">10. Extracurricular Activities</label>
+                <input type="text" id="activities" name="activities" required>
+
+                <label for="career-goals">11. Career Goals</label>
+                <input type="text" id="career-goals" name="career-goals" required>
+
+                <label for="special-needs">12. Special Needs or Disabilities</label>
+                <input type="checkbox" id="special-needs" name="special-needs">
+
+                <label for="military-service">13. Military Service</label>
+                <input type="checkbox" id="military-service" name="military-service">
+
+                <label for="hobbies">14. Hobbies or Personal Interests</label>
+                <input type="text" id="hobbies" name="hobbies">
+
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 NextGenScholar. All rights reserved.</p>
+    </footer>
+
+    <!-- JavaScript to redirect on form submission -->
+    <script>
+        function redirectToScholarshipPage(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+            window.location.href = 'scholarship.html'; // Redirects to the scholarship page
+        }
+    </script>
+</body>
+</html>
