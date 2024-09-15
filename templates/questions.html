@@ -24,6 +24,7 @@
         <section class="questionnaire">
             <h1>Scholarship Questionnaire</h1>
             <form id="scholarshipForm">
+<<<<<<< HEAD:templates/questions.html
                 <label for="age">1. Age</label>
                 <input type="text" id="age" name="age" required>
 
@@ -66,6 +67,9 @@
 
                 <label for="hobbies">14. Hobbies or Personal Interests</label>
                 <input type="text" id="hobbies" name="hobbies">
+=======
+                <!-- All form fields as before -->
+>>>>>>> 174b903 (Sending all the files to Jermaine):questions.html
 
                 <button type="submit" class="submit-btn">Submit</button>
             </form>
@@ -80,6 +84,7 @@
     </footer>
 
     <script>
+<<<<<<< HEAD:templates/questions.html
         document.getElementById('scholarshipForm').addEventListener('submit', async (event) => {
             event.preventDefault();
             const formData = new FormData(event.target);
@@ -124,5 +129,40 @@
         });
     </script>    
     
+=======
+        document.getElementById('scholarshipForm').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Get all form data
+            const formData = new FormData(event.target);
+            const data = {};
+            formData.forEach((value, key) => {
+                data[key] = value;
+            });
+
+            try {
+                // Send form data to the backend
+                const response = await fetch('/submit_scholarship_form', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                const result = await response.json();
+
+                // Store the GPT responses in localStorage
+                localStorage.setItem('scholarshipResults', JSON.stringify(result.responses));
+
+                // Redirect to the scholarship.html page
+                window.location.href = 'scholarship.html';
+            } catch (error) {
+                console.error('Error submitting form:', error);
+            }
+        });
+    </script>
+
+>>>>>>> 174b903 (Sending all the files to Jermaine):questions.html
 </body>
 </html>
