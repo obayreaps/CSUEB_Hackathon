@@ -2,26 +2,58 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+<<<<<<< HEAD:templates/page.html
     <title>ChatGPT Integration</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+=======
+    <title>Chabot Scholarships</title>
+    <link rel="stylesheet" href="style.css">
+>>>>>>> d8a6c59 (Deleted index.html, modified style.css, added new files such as main_menu.html, about, and contact pages from the figma mockup):page.html
 </head>
 <body>
-    <h4 class = "subHeaders">About Us        Contact </h4>
-    <h1 class = "mainT font"> Scholar Success </h1>
-    <p class = "font"> Dedicated to helping students with great financial need to reach higher places" </p>
-    <img src="https://i.insider.com/57c5c15a09d293c4058b52b0?width=1136&format=jpeg" width="750" height="500" class = "mainImg">
-    <h1 class="title leftalign font">Scholarships!</h1>
-        <p class = "font">List of different opportunities to achieve academic success!
-        </p>
-    <div>
-        <textarea id="userInput" placeholder="Ask me anything..."></textarea>
-        <button onclick="getResponse()">Send</button>
-    </div>
-    <div id="response"></div>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">
+            <img src="https://clpccd.org/prmg/files/docs/styles-logos/cc-logo-vertical-rgb.png" alt="Chabot College Logo">
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#">About</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Main Section -->
+    <main>
+        <h1 class="mainT font">Scholar Success</h1>
+        <!-- Centered Paragraph -->
+        <p class="centered font">Dedicated to helping students with great financial need to reach higher places</p>
+        <img src="https://i.insider.com/57c5c15a09d293c4058b52b0?width=1136&format=jpeg" width="750" height="500" class="mainImg" alt="Students celebrating success">
+        <h1 class="title font">Scholarships!</h1>
+        <!-- Centered Paragraph -->
+        <p class="centered font">List of different opportunities to achieve academic success!</p>
+
+        <!-- Text area for user input -->
+        <div class="user-input">
+            <textarea id="userInput" placeholder="Ask me anything..."></textarea>
+            <button onclick="getResponse()">Send</button>
+        </div>
+        <div id="response"></div>
+    </main>
+
+    <!-- Footer Section (Chat Icon) -->
+    <footer>
+        <div class="chat-icon">
+            <img src="https://as2.ftcdn.net/v2/jpg/02/23/29/67/1000_F_223296788_XiWSE1LRIAWYd155Z09Q5CgDgV0v5rjS.jpg" alt="Chat icon">
+        </div>
+    </footer>
+
+    <!-- JavaScript for sending user input -->
     <script>
         async function getResponse() {
             const userInput = document.getElementById('userInput').value;
-    
+
             // Send the user input to the Flask backend
             const response = await fetch('/chat', {
                 method: 'POST',
@@ -32,10 +64,10 @@
                     prompt: userInput
                 })
             });
-    
+
             const data = await response.json();
             document.getElementById('response').innerText = data;
         }
-    </script>    
+    </script>
 </body>
 </html>
