@@ -1,46 +1,128 @@
+How to add style to gpt repsonse
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-<<<<<<< HEAD:templates/page.html
     <title>ChatGPT Integration</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-=======
-    <title>Chabot Scholarships</title>
-    <link rel="stylesheet" href="style.css">
->>>>>>> d8a6c59 (Deleted index.html, modified style.css, added new files such as main_menu.html, about, and contact pages from the figma mockup):page.html
 </head>
 <body>
-    <h4 class = "subHeaders">About Us        Contact </h4>
-    <h1 class = "mainT font"> Scholar Success </h1>
-    <p class = "font"> Dedicated to helping students with great financial need to reach higher places" </p>
-    <img src="https://i.insider.com/57c5c15a09d293c4058b52b0?width=1136&format=jpeg" width="750" height="500" class = "mainImg">
-    <h1 class="title leftalign font">Scholarships!</h1>
-        <p class = "font">List of different opportunities to achieve academic success!
-        </p>
-    <div>
-        <textarea id="userInput" placeholder="Ask me anything..."></textarea>
-        <button onclick="getResponse()">Send</button>
+    <h4 class="subHeaders">About Us Contact</h4>
+    <img src="https://i.insider.com/57c5c15a09d293c4058b52b0?width=1136&format=jpeg" width="750" height="500" class="mainImg">
+    <h1 class="title leftalign font">Enter the form to get your search starting!</h1>
+    <div id="formResponse"></div> <!-- Add this div where you want the responses to appear -->
+
+    <!-- Embedded Demographics Questionnaire -->
+    <div class="questionnaire">
+        <h1>Demographics Questionnaire</h1>
+        <form id="demographicsForm" action="/submit" method="POST">
+            <div class="form-group">
+                <label for="age">Age:</label>
+                <input type="number" id="age" name="age" min="1" max="120" required>
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender" required>
+                    <option value="">Select your gender</option>
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="non-binary">Non-binary</option>
+                    <option value="prefer-not-to-say">Prefer not to say</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="education">Education Level:</label>
+                <select id="education" name="education" required>
+                    <option value="">Select your education level</option>
+                    <option value="elementary">Elementary School</option>
+                    <option value="middle-school">Middle School</option>
+                    <option value="high-school">High School or equivalent</option>
+                    <option value="associate">Associate Degree</option>
+                    <option value="bachelor">Bachelor's Degree</option>
+                    <option value="master">Master's Degree</option>
+                    <option value="doctorate">Doctorate or higher</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="income">Annual Income (USD):</label>
+                <select id="income" name="income" required>
+                    <option value="">Select your income range</option>
+                    <option value="under-10000">10,000 and under</option>
+                    <option value="10000-20000">10,000 to 20,000</option>
+                    <option value="20000-40000">20,000 to 40,000</option>
+                    <option value="40000-60000">40,000 to 60,000</option>
+                    <option value="60000-80000">60,000 to 80,000</option>
+                    <option value="80000-100000">80,000 to 100,000</option>
+                    <option value="over-100000">Over 100,000</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="location">Location (City, Country):</label>
+                <input type="text" id="location" name="location" placeholder="Enter your location" required>
+            </div>
+            <button type="submit">Submit</button>
+        </form>
     </div>
-    <div id="response"></div>
+
+    <!-- JavaScript for handling the Demographics Questionnaire form submission -->
     <script>
-        async function getResponse() {
-            const userInput = document.getElementById('userInput').value;
+    document.getElementById('demographicsForm').addEventListener('submit', async function(event) {
+    event.preventDefault(); // Prevent the form from submitting the traditional way
     
-            // Send the user input to the Flask backend
-            const response = await fetch('/chat', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    prompt: userInput
-                })
-            });
+    const formData = new FormData(event.target);
     
-            const data = await response.json();
-            document.getElementById('response').innerText = data;
+    const data = {
+        age: formData.get('age'),
+        gender: formData.get('gender'),
+        education: formData.get('education'),
+        income: formData.get('income'),
+        location: formData.get('location')
+    };
+    
+    try {
+        // Send form data to the Flask backend
+        const response = await fetch('/submit', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(data)
+        });
+        
+        // Check if the response is okay
+        if (!response.ok) {
+            throw new Error('Failed to fetch response');
         }
-    </script>    
+        
+        // Parse the JSON response
+        const result = await response.json();
+        
+        // Get the response div
+        const responseDiv = document.getElementById('formResponse');
+        responseDiv.innerHTML = ''; // Clear previous content
+        
+        // Function to clean up GPT responses by removing unwanted numbering or formatting
+        const cleanResponse = (text) => {
+            // Use regex to remove leading numbers and dots or inconsistencies
+            return text.replace(/^\d+\.\s*/gm, '').trim();  // This removes numbering like "1. ", "2. "
+        };
+        
+        // Iterate through each response, clean it, and display it with new numbering
+        result.responses.forEach((response, index) => {
+            const cleanedResponse = cleanResponse(response);
+            const paragraph = document.createElement('p');
+            paragraph.textContent = ${index + 1}. ${cleanedResponse}; // Add back numbering based on the index
+            responseDiv.appendChild(paragraph);
+        });
+    } catch (error) {
+        console.error('Error:', error);
+        document.getElementById('formResponse').innerText = 'An error occurred. Please try again.';
+    }
+});
+
+    </script> 
 </body>
 </html>

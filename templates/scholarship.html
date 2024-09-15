@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Scholarship Results</title>
+    <link rel="stylesheet" href="static\styles.css">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href="main_menu.html"><img src="static/images/nextgen_transparentI.png" alt="NextGenScholar Directory Logo"></a>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="userRegistration.html">Register</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="scholarship-results">
+            <h1>Mock List of Scholarships Based on Your Answers</h1>
+            <div id="scholarshipList"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 NextGenScholar. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Retrieve GPT responses from localStorage
+        const scholarshipResults = JSON.parse(localStorage.getItem('scholarshipResults'));
+
+        const scholarshipList = document.getElementById('scholarshipList');
+
+        // Display each scholarship response as a paragraph
+        scholarshipResults.forEach((result, index) => {
+            const scholarshipDiv = document.createElement('div');
+            scholarshipDiv.classList.add('scholarship-item');
+            scholarshipDiv.innerHTML = `<p>${index + 1}. ${result}</p>`;
+            scholarshipList.appendChild(scholarshipDiv);
+        });
+    </script>
+
+</body>
+</html>

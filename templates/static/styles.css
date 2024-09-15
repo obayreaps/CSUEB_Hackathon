@@ -333,3 +333,41 @@ button.cta-btn:hover {
 .chatbox {
     background-color:lightblue;
 }
+
+/* Chatbox styling */
+.chatbox {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    background-color: #f1f1f1;
+    border-top: 1px solid #ccc;
+}
+
+.chatbox textarea {
+    width: 70%;
+    padding: 15px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 16px;
+    resize: none;
+    margin-right: 10px;
+}
+
+.chatbox button.send-btn {
+    padding: 15px 30px;
+    background-color: #4d90fe;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+.chatbox button.send-btn:hover {
+    background-color: #357ae8;
+}

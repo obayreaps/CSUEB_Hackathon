@@ -2,14 +2,34 @@ from flask import Flask, render_template, request, jsonify
 import os
 import openai
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='templates/static')
 api_key = os.getenv('MY_API_KEY')
 openai.api_key = api_key
 
 @app.route("/")
 def index():
     # Render the page.html file
-    return render_template('page.html')
+    return render_template('main_menu.html')
+
+@app.route('/about.html')
+def about():
+    return render_template('about.html')
+
+@app.route('/contact.html')
+def contact():
+    return render_template('contact.html')
+
+@app.route('/userRegistration.html')
+def registration():
+    return render_template('userRegistration.html')
+
+@app.route('/questions.html')
+def questions():
+    return render_template('questions.html')
+
+@app.route('/scholarship.html')
+def scholarships():
+    return render_template('scholarship.html')
 
 def getGptResponse(user_input, results=1):
     response = openai.ChatCompletion.create(
@@ -20,8 +40,21 @@ def getGptResponse(user_input, results=1):
         max_tokens=120,
         n=results
     )
-    responses = [choice['message']['content'].strip() for choice in response['choices']]
+    # Update this to include both the response text and URLs
+    responses = [
+        {
+            'text': choice['message']['content'].strip(),
+            'url': extract_url(choice['message']['content'])  # Use a function to extract URLs if needed
+        }
+        for choice in response['choices']
+    ]
     return responses
+
+# Example URL extraction function (adjust as necessary)
+def extract_url(text):
+    import re
+    urls = re.findall(r'(https?://\S+)', text)
+    return urls[0] if urls else None
 
 @app.route('/chat', methods=['POST'])
 def chat():
@@ -31,16 +64,40 @@ def chat():
 @app.route('/submit', methods=['POST'])
 def submit():
     data = request.json
+    # Extract all the fields from the submitted form data
     age = data.get('age')
-    gender = data.get('gender')
-    education = data.get('education')
+    education = data.get('education-level')
+    ethnicity = data.get('ethnicity')
+    programs = data.get('programs')
     income = data.get('income')
-    location = data.get('location')
+    essay = 'No Essay' if data.get('essay') else 'Essay required'
+    field_of_study = data.get('field-of-study')
+    citizenship = data.get('citizenship')
+    achievements = data.get('achievements')
+    activities = data.get('activities')
+    career_goals = data.get('career-goals')
+    special_needs = 'Yes' if data.get('special-needs') else 'No'
+    military_service = 'Yes' if data.get('military-service') else 'No'
+    hobbies = data.get('hobbies')
+
     # Create the user input for GPT
-    user_input = f"Short respone. Find scholarships for someone who is {age} years old, {gender}, with a {education} level education, residing in {location}, with an income of {income}. Also send the links to the scholarships if possible."
-    # Get 10 responses from GPT
+    user_input = (
+        f"Find one scholarship for someone who is {age} years old, identifies as {ethnicity}, "
+        f"with a {education} education level, involved in {programs}, has a household income of {income}, "
+        f"{essay}, studying {field_of_study}, with citizenship status as {citizenship}. "
+        f"They have achievements in {achievements}, involved in extracurricular activities such as {activities}, "
+        f"with career goals of {career_goals}. Special needs: {special_needs}. "
+        f"Military service: {military_service}. Hobbies: {hobbies}. "
+        "Provide links to relevant scholarships if possible."
+    )
+
+    # Get GPT responses including links
     responses = getGptResponse(user_input, 10)
+
+    # Print responses and return them in JSON format
+    print(responses)
     return jsonify({'responses': responses}), 200
+
 
 if __name__ == '__main__':
     app.run(debug=True)
