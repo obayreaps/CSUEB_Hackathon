@@ -23,8 +23,7 @@
     <main>
         <section class="questionnaire">
             <h1>Scholarship Questionnaire</h1>
-            <form action="submit_scholarship_form.php" method="POST">
-                <!-- Original Questions -->
+            <form id="scholarshipForm" onsubmit="redirectToScholarshipPage(event)">
                 <label for="age">1. Age</label>
                 <input type="text" id="age" name="age" required>
 
@@ -44,28 +43,28 @@
                 <input type="checkbox" id="essay" name="essay">
 
                 <!-- New Questions -->
-                <label for="field-of-study">7. Field of Study or Major: What is your current or intended major or field of study?</label>
+                <label for="field-of-study">7. Field of Study or Major</label>
                 <input type="text" id="field-of-study" name="field-of-study" required>
 
-                <label for="citizenship">8. Citizenship or Residency Status: Are you a citizen, permanent resident, or international student?</label>
+                <label for="citizenship">8. Citizenship or Residency Status</label>
                 <input type="text" id="citizenship" name="citizenship" required>
 
-                <label for="achievements">9. Academic Achievements: What is your GPA or highest academic achievement?</label>
+                <label for="achievements">9. Academic Achievements</label>
                 <input type="text" id="achievements" name="achievements" required>
 
-                <label for="activities">10. Extracurricular Activities: Are you involved in any extracurricular activities? (sports, volunteering, leadership, etc.)</label>
+                <label for="activities">10. Extracurricular Activities</label>
                 <input type="text" id="activities" name="activities" required>
 
-                <label for="career-goals">11. Career Goals: What are your long-term career aspirations?</label>
+                <label for="career-goals">11. Career Goals</label>
                 <input type="text" id="career-goals" name="career-goals" required>
 
-                <label for="special-needs">12. Special Needs or Disabilities: Do you have any disabilities or special needs that should be considered?</label>
+                <label for="special-needs">12. Special Needs or Disabilities</label>
                 <input type="checkbox" id="special-needs" name="special-needs">
 
-                <label for="military-service">13. Military Service: Are you or any family members involved in the military?</label>
+                <label for="military-service">13. Military Service</label>
                 <input type="checkbox" id="military-service" name="military-service">
 
-                <label for="hobbies">14. Hobbies or Personal Interests: Do you have any hobbies or personal interests you'd like us to know about?</label>
+                <label for="hobbies">14. Hobbies or Personal Interests</label>
                 <input type="text" id="hobbies" name="hobbies">
 
                 <button type="submit" class="submit-btn">Submit</button>
@@ -76,6 +75,13 @@
     <footer>
         <p>&copy; 2024 NextGenScholar. All rights reserved.</p>
     </footer>
+
+    <!-- JavaScript to redirect on form submission -->
+    <script>
+        function redirectToScholarshipPage(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+            window.location.href = 'scholarship.html'; // Redirects to the scholarship page
+        }
+    </script>
 </body>
 </html>
-
