@@ -1,0 +1,124 @@
+/* General styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f4f8;
+    color: #333;
+}
+
+header {
+    background-color: #4d90fe;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    text-align: left;
+}
+
+.logo img {
+    width: 80px;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 20px;
+}
+
+nav ul li {
+    margin-left: 20px;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.hero {
+    text-align: center;
+    padding: 50px;
+    background-color: #ffffff;
+}
+
+.hero-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: nowrap; /* Prevents images from stacking */
+    gap: 40px; /* Adds spacing between the logo and images */
+    max-width: 1200px;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+.hero-center {
+    text-align: center;
+    flex-grow: 1; /* Ensure the logo stays centered */
+}
+
+.hero-logo {
+    display: block;
+    margin: 0 auto;
+}
+
+.hero-center p {
+    font-size: 18px;
+    margin: 20px 0;
+}
+
+.cta-btn {
+    padding: 10px 20px;
+    background-color: #4d90fe;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-size: 16px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
+.cta-btn:hover {
+    background-color: #357ae8;
+}
+
+/* Main images */
+.main-image-left, .main-image-right {
+    width: 30%; /* Lowered width to better fit the layout */
+    height: auto;
+    border-radius: 15px;
+    object-fit: cover;
+}
+
+.main-image-left {
+    margin-right: auto;
+}
+
+.main-image-right {
+    margin-left: auto;
+}
+
+/* About and Contact images */
+.about-img, .contact-img {
+    width: 40%;
+    border-radius: 10px;
+}
+
+footer {
+    background-color: #4d90fe;
+    padding: 10px;
+    text-align: center;
+    color: white;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+}
