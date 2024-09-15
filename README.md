@@ -1,6 +1,6 @@
 NextGenScholar
 
-Collaborators: Kevin Le, Jermaine Miller, Jet Ansom
+Collaborators: Kevin Le, Jermaine Miller, Jet Albano
 
 Introducing NextGenScholar, the platform that simplifies the scholarship search process. 
 By creating an account and answering a few personalized questions, users gain instant access to scholarships tailored specifically to their profile. 
