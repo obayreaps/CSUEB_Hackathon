@@ -3,7 +3,7 @@ import os
 import openai
 
 app = Flask(__name__, static_folder='templates/static')
-api_key = os.getenv('Open API Key')
+api_key = os.getenv('MY_API_KEY')
 openai.api_key = api_key
 
 @app.route("/")
