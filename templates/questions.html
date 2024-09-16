@@ -4,12 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Scholarship Questionnaire</title>
-    <link rel="stylesheet" href="static/styles.css">
+    <link rel="stylesheet" href="static\styles.css">
 </head>
 <body>
     <header>
         <div class="logo">
-            <a href="main_menu.html"><img src="static/images/nextgen_transparentI.png" alt="NextGenScholar Directory Logo"></a>
+            <a href="main_menu.html"><img src="images/nextgen_transparentI.png" alt="NextGenScholar Directory Logo"></a>
         </div>
         <nav>
             <ul>
@@ -23,8 +23,7 @@
     <main>
         <section class="questionnaire">
             <h1>Scholarship Questionnaire</h1>
-            <form id="scholarshipForm">
-<<<<<<< HEAD:templates/questions.html
+            <form id="scholarshipForm" onsubmit="redirectToScholarshipPage(event)">
                 <label for="age">1. Age</label>
                 <input type="text" id="age" name="age" required>
 
@@ -67,15 +66,9 @@
 
                 <label for="hobbies">14. Hobbies or Personal Interests</label>
                 <input type="text" id="hobbies" name="hobbies">
-=======
-                <!-- All form fields as before -->
->>>>>>> 174b903 (Sending all the files to Jermaine):questions.html
 
                 <button type="submit" class="submit-btn">Submit</button>
             </form>
-
-            <!-- Response Output Section -->
-            <div id="response-output" class="response-output"></div>
         </section>
     </main>
 
@@ -83,86 +76,12 @@
         <p>&copy; 2024 NextGenScholar. All rights reserved.</p>
     </footer>
 
+    <!-- JavaScript to redirect on form submission -->
     <script>
-<<<<<<< HEAD:templates/questions.html
-        document.getElementById('scholarshipForm').addEventListener('submit', async (event) => {
-            event.preventDefault();
-            const formData = new FormData(event.target);
-            const jsonData = Object.fromEntries(formData.entries());
-            jsonData.essay = document.getElementById('essay').checked;
-            jsonData['special-needs'] = document.getElementById('special-needs').checked;
-            jsonData['military-service'] = document.getElementById('military-service').checked;
-    
-            try {
-                const response = await fetch('/submit', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(jsonData),
-                });
-    
-                const result = await response.json();
-                const responseContainer = document.getElementById('response-output');
-    
-                // Clear any previous responses
-                responseContainer.innerHTML = '';
-    
-                // Loop through each response and display text and link
-                result.responses.forEach((response, index) => {
-                    const responseElement = document.createElement('p');
-                    responseElement.textContent = `${index + 1}. ${response.text}`;
-    
-                    // If a URL is available, create a link element
-                    if (response.url) {
-                        const linkElement = document.createElement('a');
-                        linkElement.href = response.url;
-                        linkElement.textContent = ' [View Scholarship]';
-                        linkElement.target = '_blank';  // Opens the link in a new tab
-                        responseElement.appendChild(linkElement);
-                    }
-    
-                    responseContainer.appendChild(responseElement);
-                });
-            } catch (error) {
-                console.error('Error:', error);
-                document.getElementById('response-output').textContent = 'An error occurred while fetching the response.';
-            }
-        });
-    </script>    
-    
-=======
-        document.getElementById('scholarshipForm').addEventListener('submit', async function(event) {
-            event.preventDefault(); // Prevent the default form submission
-
-            // Get all form data
-            const formData = new FormData(event.target);
-            const data = {};
-            formData.forEach((value, key) => {
-                data[key] = value;
-            });
-
-            try {
-                // Send form data to the backend
-                const response = await fetch('/submit_scholarship_form', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(data)
-                });
-
-                const result = await response.json();
-
-                // Store the GPT responses in localStorage
-                localStorage.setItem('scholarshipResults', JSON.stringify(result.responses));
-
-                // Redirect to the scholarship.html page
-                window.location.href = 'scholarship.html';
-            } catch (error) {
-                console.error('Error submitting form:', error);
-            }
-        });
+        function redirectToScholarshipPage(event) {
+            event.preventDefault(); // Prevent the form from submitting the traditional way
+            window.location.href = 'scholarship.html'; // Redirects to the scholarship page
+        }
     </script>
-
->>>>>>> 174b903 (Sending all the files to Jermaine):questions.html
 </body>
 </html>
