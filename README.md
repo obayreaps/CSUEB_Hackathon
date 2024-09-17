@@ -17,3 +17,5 @@ How to run the program:
 2)Type in python .\app.py   OR python3 app_.py
 
 Click this link to run the program! [http](http://127.0.0.1:5000)
+
+Link to Figma Drafting Board: https://www.figma.com/design/QHPuRCjXZ7BjCYej4lVL7N/NextGenScholar-Drafting-Board?node-id=0-1&t=Xv5s3MRWTI4yNquj-1
