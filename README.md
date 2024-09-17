@@ -1,5 +1,5 @@
-NextGenScholar
-
+Project: NextGenScholar
+Event: CSUEB MESA-U-HACKATHON
 Collaborators: Kevin Le, Jermaine Miller, Jet Albano
 
 Introducing NextGenScholar, the platform that simplifies the scholarship search process. 
