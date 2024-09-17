@@ -3,12 +3,16 @@ import os
 import openai
 
 app = Flask(__name__, static_folder='templates/static')
-api_key = os.getenv('MY_API_KEY')
+api_key = os.getenv('OPENAI_API_KEY')  # Make sure you have this API key set up properly
 openai.api_key = api_key
 
 @app.route("/")
 def index():
-    # Render the page.html file
+    # Render the main_menu.html file
+    return render_template('main_menu.html')
+
+@app.route('/main_menu.html')
+def main_menu():
     return render_template('main_menu.html')
 
 @app.route('/about.html')
@@ -44,7 +48,7 @@ def getGptResponse(user_input, results=1):
     responses = [
         {
             'text': choice['message']['content'].strip(),
-            'url': extract_url(choice['message']['content'])  # Use a function to extract URLs if needed
+            'url': extract_url(choice['message']['content'])  # Extract URLs from response text if any
         }
         for choice in response['choices']
     ]
@@ -59,7 +63,7 @@ def extract_url(text):
 @app.route('/chat', methods=['POST'])
 def chat():
     user_input = request.json.get('prompt')
-    return jsonify({'response':  getGptResponse(user_input, 1)[0]})
+    return jsonify({'response': getGptResponse(user_input, 1)[0]})
 
 @app.route('/submit', methods=['POST'])
 def submit():
@@ -82,7 +86,7 @@ def submit():
 
     # Create the user input for GPT
     user_input = (
-        f"Find one scholarship for someone who is {age} years old, identifies as {ethnicity}, "
+        f"Find scholarships for someone who is {age} years old, identifies as {ethnicity}, "
         f"with a {education} education level, involved in {programs}, has a household income of {income}, "
         f"{essay}, studying {field_of_study}, with citizenship status as {citizenship}. "
         f"They have achievements in {achievements}, involved in extracurricular activities such as {activities}, "
@@ -97,7 +101,6 @@ def submit():
     # Print responses and return them in JSON format
     print(responses)
     return jsonify({'responses': responses}), 200
-
 
 if __name__ == '__main__':
     app.run(debug=True)
