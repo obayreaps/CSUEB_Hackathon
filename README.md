@@ -14,7 +14,6 @@ This project was built with the assistance of Chatgpt in less than 22 hours.
 
 How to run the program:
 1)Need to pip install flask. 
-2)Only runs on window devices
-3)Type in python .\app.py
+2)Type in python .\app.py   OR python3 app_.py
 
 Click this link to run the program! [http](http://127.0.0.1:5000)
