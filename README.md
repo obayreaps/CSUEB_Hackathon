@@ -9,3 +9,9 @@ This ensures that no scholarship is missed and makes financial aid more accessib
 With NextGenScholar, the path to your future is no longer a search, but a guided journey towards opportunity and success.
 
 This project was built with the assistance of Chatgpt in less than 22 hours. 
+
+How to run the program:
+Need to pip install flask. 
+Only runs on window devices
+Type in python .\app.py
+Click running on [http](http://127.0.0.1:5000)
